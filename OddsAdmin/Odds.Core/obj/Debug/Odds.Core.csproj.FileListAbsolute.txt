@@ -1,0 +1,6 @@
+D:\Assignment-Client\OddsAdmin\OddsAdmin\Odds.Core\bin\Debug\Odds.Core.dll
+D:\Assignment-Client\OddsAdmin\OddsAdmin\Odds.Core\bin\Debug\Odds.Core.pdb
+D:\Assignment-Client\OddsAdmin\OddsAdmin\Odds.Core\obj\Debug\Odds.Core.csprojResolveAssemblyReference.cache
+D:\Assignment-Client\OddsAdmin\OddsAdmin\Odds.Core\obj\Debug\Odds.Core.csproj.CoreCompileInputs.cache
+D:\Assignment-Client\OddsAdmin\OddsAdmin\Odds.Core\obj\Debug\Odds.Core.dll
+D:\Assignment-Client\OddsAdmin\OddsAdmin\Odds.Core\obj\Debug\Odds.Core.pdb

@@ -1,0 +1,12 @@
+D:\Assignment-Client\OddsAdmin\OddsAdmin\Odds.Data\obj\Debug\Odds.Data.csprojResolveAssemblyReference.cache
+D:\Assignment-Client\OddsAdmin\OddsAdmin\Odds.Data\obj\Debug\Odds.Data.csproj.CoreCompileInputs.cache
+D:\Assignment-Client\OddsAdmin\OddsAdmin\Odds.Data\bin\Debug\Odds.Data.dll
+D:\Assignment-Client\OddsAdmin\OddsAdmin\Odds.Data\bin\Debug\Odds.Data.pdb
+D:\Assignment-Client\OddsAdmin\OddsAdmin\Odds.Data\bin\Debug\Autofac.dll
+D:\Assignment-Client\OddsAdmin\OddsAdmin\Odds.Data\bin\Debug\EntityFramework.dll
+D:\Assignment-Client\OddsAdmin\OddsAdmin\Odds.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\Assignment-Client\OddsAdmin\OddsAdmin\Odds.Data\bin\Debug\Odds.Core.dll
+D:\Assignment-Client\OddsAdmin\OddsAdmin\Odds.Data\bin\Debug\Odds.Core.pdb
+D:\Assignment-Client\OddsAdmin\OddsAdmin\Odds.Data\obj\Debug\Odds.Data.dll
+D:\Assignment-Client\OddsAdmin\OddsAdmin\Odds.Data\obj\Debug\Odds.Data.pdb
+D:\Assignment-Client\OddsAdmin\OddsAdmin\Odds.Data\bin\Debug\Autofac.xml

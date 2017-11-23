@@ -1,0 +1,41 @@
+﻿@model OddsAdmin.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+  
+}
+
+<div class="clearfix">&nbsp;</div>
+<div class="clearfix">&nbsp;</div>
+<div class="container">
+    <div class="table-responsive col-md-6 col-md-offset-3">
+        <h3>Account Login</h3>
+    @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+    {
+     @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true)
+        <table class="table table-bordered table-striped">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">Username</td>
+                    <td class="col-md-4">@Html.TextBoxFor(m => m.Username)</td>
+                    <td class="col-md-4">@Html.ValidationMessageFor(m => m.Username)</td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">Password</td>
+                    <td class="col-md-4">@Html.PasswordFor(m => m.Password)</td>
+                    <td class="col-md-4">@Html.ValidationMessageFor(m => m.Password)</td>
+                </tr>
+                <tr>
+                    <td class="text-right" colspan="2"><input type="submit" value="Login" class="btn btn-primary" /></td>
+                </tr>
+             
+            </tbody>
+        </table>
+        }
+    </div>
+
+</div>
+<script type="text/javascript">
+    $('.divhead').hide();
+</script>
