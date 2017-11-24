@@ -55,6 +55,7 @@ namespace OddsAdmin.Controllers
             odd.Odd_1 = model.Odd_1;
             odd.Odd_X = model.Odd_X;
             odd.Odd_2 = model.Odd_2;
+            odd.Id = model.Id;
             var result = _repo.SaveUpdateOdd(odd);
             return result;
         }
@@ -90,9 +91,19 @@ namespace OddsAdmin.Controllers
             var length = Request.Form.GetValues("length").FirstOrDefault();
             //Get Sort columns values when we click on Header Name of column
             //getting column name
-            var sortColumn = Request.Form.GetValues("columns[" + Request.Form.GetValues("order[0][column]").FirstOrDefault() + "][name]").FirstOrDefault();
+
+            string sortColumn = string.Empty;
+            string sortColumnDir = string.Empty;
+
+            var sortColumnDirection = Request.Form.GetValues("order[0][dir]");
+            if (sortColumnDirection != null)
+            {
+                sortColumnDir = sortColumnDirection.FirstOrDefault();
+                sortColumn = Request.Form.GetValues("columns[" + Request.Form.GetValues("order[0][column]").FirstOrDefault() + "][name]").FirstOrDefault();
+            }
+          
             //Soring direction(either desending or ascending)
-            var sortColumnDir = Request.Form.GetValues("order[0][dir]").FirstOrDefault();
+           
 
             int pageSize = length != null ? Convert.ToInt32(length) : 0;
             int skip = start != null ? Convert.ToInt32(start) : 0;

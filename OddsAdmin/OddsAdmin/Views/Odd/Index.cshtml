@@ -10,9 +10,9 @@
 
 <div class="container">
    
-    <div class="table-responsive col-md-6 col-md-offset-3">
+    <div class="table-responsive col-md-12">
         <h3>Odds</h3>
-        @using (Html.BeginForm("Index", "Odd", FormMethod.Post, new { @id = "formodd" }))
+        @using (Html.BeginForm("Index", "Odd", FormMethod.Post, new { @id = "formodd",@style="width:60%;" }))
         {
             @Html.HiddenFor(m => m.Id)
             @Html.ValidationSummary(true)
@@ -134,15 +134,16 @@
 
 
            tblOdds = $("#tblOdds")
-            .on('order.dt', function (a, b, c) {
-                $("#tblOdds").find("th:eq(" + c[0].col + ")").attr("title", c[0].dir);
-            })
+            //.on('order.dt', function (a, b, c) {
+            //    $("#tblOdds").find("th:eq(" + c[0].col + ")").attr("title", c[0].dir);
+            //})
             .DataTable({
                 "dom": '<"visibleColumn"lBf>rtip<"clear">',
                 "processing": true, // for show progress bar while loading
                 "serverSide": true, // if it is true the preocess is done on server side
                 "filter": true, // disables search box               
                 "pagingType": "full_numbers",
+                "order": [],
                 "orderMulti": false, // disable multiple column loading at once
                 "ajax": {
                     "url": "/Odd/GetOdds",
