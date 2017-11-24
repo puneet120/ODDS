@@ -54,9 +54,11 @@
     <Compile Include="Interfaces\ILoggerRepository.cs" />
     <Compile Include="Interfaces\ILoginRepository.cs" />
     <Compile Include="Interfaces\ISqlRepository.cs" />
+    <Compile Include="Interfaces\IOddRepository.cs" />
     <Compile Include="Interfaces\LoggerRepository.cs" />
     <Compile Include="Interfaces\LoginRepository.cs" />
     <Compile Include="Interfaces\SqlRepository.cs" />
+    <Compile Include="Interfaces\OddRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

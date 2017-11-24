@@ -17,6 +17,7 @@ namespace Odds.Services.Dependency
             builder.RegisterGeneric(typeof(SqlRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();           
             builder.RegisterType<LoginRepository>().As<ILoginRepository>().InstancePerRequest();         
             builder.RegisterType<LoggerRepository>().As<ILoggerRepository>().InstancePerRequest();
+            builder.RegisterType<OddRepository>().As<IOddRepository>().InstancePerRequest();
             base.Load(builder);
         }
     }
