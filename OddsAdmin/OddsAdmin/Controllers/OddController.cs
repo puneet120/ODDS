@@ -40,9 +40,8 @@ namespace OddsAdmin.Controllers
         [HttpPost]       
         public ActionResult Index(OddModel model)
         {
-            var result = SaveUpdateOdd(model);          
-            TempData["Status"] = result;
-            return RedirectToAction("Index");
+            var result = SaveUpdateOdd(model);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         #endregion

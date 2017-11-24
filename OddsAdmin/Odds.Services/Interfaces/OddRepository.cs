@@ -80,7 +80,7 @@ namespace Odds.Services.Interfaces
                     qry.Odd_X = odd.Odd_X;
                     qry.Odd_2 = odd.Odd_2;
                     _odds.Update(qry);
-                    return 2;
+                    return odd.Id;
                 }
             }
             else
@@ -91,7 +91,7 @@ namespace Odds.Services.Interfaces
                 odd.Odd_X = odd.Odd_X;
                 odd.Odd_2 = odd.Odd_2;
                 _odds.Insert(odd);
-                return 1;
+                return odd.Id;
             }
             return 0;
         }

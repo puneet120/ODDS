@@ -1,7 +1,7 @@
 ﻿@model OddsAdmin.Models.OddModel
 @{
     ViewBag.Title = "Odds";
-  
+
 }
 
 @Scripts.Render("~/bundles/datatable")
@@ -9,10 +9,10 @@
 @Styles.Render("~/Content/toastrcss")
 
 <div class="container">
-   
+
     <div class="table-responsive col-md-12">
         <h3>Odds</h3>
-        @using (Html.BeginForm("Index", "Odd", FormMethod.Post, new { @id = "formodd",@style="width:60%;" }))
+        @using (Html.BeginForm("Index", "Odd", FormMethod.Post, new { @id = "formodd", @style = "width:60%;" }))
         {
             @Html.HiddenFor(m => m.Id)
             @Html.ValidationSummary(true)
@@ -40,7 +40,7 @@
                     </tr>
                     <tr>
                         <td class="text-right" colspan="2">
-                            <input type="submit" value="Save" class="btn btn-primary btnSave" />
+                            <input type="button" value="Save" class="btn btn-primary btnSave" />
                             <input type="submit" value="Save" style="display:none;" class="btn btn-primary btnSaveData" />
                         </td>
                     </tr>
@@ -91,32 +91,71 @@
                 "Description": $("#Description").val(),
                 "Odd_1": $("#Odd_1").val(),
                 "Odd_X": $("#Odd_X").val(),
-                "Odd_2": $("#Odd_2").val()
+                "Odd_2": $("#Odd_2").val(),
+                "Id": $("#Id").val()
 
             };
-
             $.ajax({
                 type: "POST",
-                url: 'http://localhost:49783/odd/save',
+                url: '/Odd/Index',
                 data: values,
                 // contentType: "application/json;charset=utf-8",
-                success: function (data, status, xhr) {
-                    alert("The result is : " + status + ": " + data);
-                    $(".btnSaveData").click();
+                success: function (data, status, xhr) {                  
+                    ReloadGrid(tblOdds);
+                    if ($('.btnSave').val() == "Save") {
+                        toastr.success("Odd added successfully!");
+                    }
+                    else {
+                        toastr.success("Odd updated successfully!");
+                    }
+
+                    $('.btnSave').val("Save");
+                    CallMessaging(data);
+
                 },
                 error: function (xhr) {
                     alert(xhr.responseText);
-                    $(".btnSaveData").click();
+                   
                 }
             });
+
+            
         }
     });
 
-     </script>
+
+    function CallMessaging(Id)
+    {
+        var newvalues = {
+            "Description": $("#Description").val(),
+            "Odd_1": $("#Odd_1").val(),
+            "Odd_X": $("#Odd_X").val(),
+            "Odd_2": $("#Odd_2").val(),
+            "Id": Id
+
+        };
+
+        Clearcontrols();
+        $('#Id').val('');
+        $.ajax({
+            type: "POST",
+            url: 'http://localhost:50283/odd/save',
+            data: newvalues,
+            // contentType: "application/json;charset=utf-8",
+            success: function (data, status, xhr) {
+
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+
+            }
+        });
+    }
+</script>
 
 
 
-            <script type="text/javascript">
+<script type="text/javascript">
                 var tblOdds = "";
     $(function () {
         BindGrid();
@@ -141,7 +180,7 @@
                 "dom": '<"visibleColumn"lBf>rtip<"clear">',
                 "processing": true, // for show progress bar while loading
                 "serverSide": true, // if it is true the preocess is done on server side
-                "filter": true, // disables search box               
+                "filter": true, // disables search box
                 "pagingType": "full_numbers",
                 "order": [],
                 "orderMulti": false, // disable multiple column loading at once
@@ -241,7 +280,7 @@
 
 
        function Clearcontrols() {
-           $("#Description,#Odd_1,#Odd_X,#Odd_2").val('');                   
+           $("#Description,#Odd_1,#Odd_X,#Odd_2").val('');
            $('.field-validation-error').html('');
 
        }
@@ -254,13 +293,13 @@
                data: { "Id": id },
                type: "POST",
                success: function (resp) {
-
+                   $('.btnSave').val("Update");
                    $("#Id").val(resp.Id);
                    $("#Description").val(resp.Description);
                    $("#Odd_1").val(resp.Odd_1);
                    $("#Odd_X").val(resp.Odd_X);
-                   $("#Odd_2").val(resp.Odd_2);  
-                  
+                   $("#Odd_2").val(resp.Odd_2);
+
                },
                error: function (req, status, err) {
                    console.log('something went wrong', status, err);
@@ -272,6 +311,7 @@
        function DeleteRow(id) {
 
            if (confirm('Are you sure want to delete this record?')) {
+               Clearcontrols();
                $.ajax({
                    url: '/Odd/DeleteOdd',
                    dataType: 'json',
@@ -280,7 +320,7 @@
                    success: function (resp) {
                        toastr.success("Odd deleted successfully!");
                        ReloadGrid(tblOdds);
-                      
+                       CallMessaging(id);
                    },
                    error: function (req, status, err) {
                        console.log('something went wrong', status, err);
