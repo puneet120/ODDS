@@ -58,6 +58,7 @@ namespace Odds.Services.Interfaces
                 }
             }
 
+            qry = qry.OrderByDescending(m => m.Id);
             return qry;
         }
 

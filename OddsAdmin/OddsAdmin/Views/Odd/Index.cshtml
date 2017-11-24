@@ -1,0 +1,293 @@
+﻿@model OddsAdmin.Models.OddModel
+@{
+    ViewBag.Title = "Odds";
+  
+}
+
+@Scripts.Render("~/bundles/datatable")
+@Scripts.Render("~/Content/toastrjs")
+@Styles.Render("~/Content/toastrcss")
+
+<div class="container">
+   
+    <div class="table-responsive col-md-6 col-md-offset-3">
+        <h3>Odds</h3>
+        @using (Html.BeginForm("Index", "Odd", FormMethod.Post, new { @id = "formodd" }))
+        {
+            @Html.HiddenFor(m => m.Id)
+            @Html.ValidationSummary(true)
+            <table class="table table-bordered table-striped">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">Odd Description</td>
+                        <td class="col-md-4">@Html.TextAreaFor(m => m.Description)</td>
+                        <td class="col-md-4">@Html.ValidationMessageFor(m => m.Description)</td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">Odd_1</td>
+                        <td class="col-md-4">@Html.TextBoxFor(m => m.Odd_1)</td>
+                        <td class="col-md-4">@Html.ValidationMessageFor(m => m.Odd_1)</td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">Odd_X</td>
+                        <td class="col-md-4">@Html.TextBoxFor(m => m.Odd_X)</td>
+                        <td class="col-md-4">@Html.ValidationMessageFor(m => m.Odd_X)</td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">Odd_2</td>
+                        <td class="col-md-4">@Html.TextBoxFor(m => m.Odd_2)</td>
+                        <td class="col-md-4">@Html.ValidationMessageFor(m => m.Odd_2)</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right" colspan="2">
+                            <input type="submit" value="Save" class="btn btn-primary btnSave" />
+                            <input type="submit" value="Save" style="display:none;" class="btn btn-primary btnSaveData" />
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        }
+        <div class="table-responsive mt10" style="width: 100%;">
+            <table class="table table-bordered table-hover mb20 " id="tblOdds" style="width: 100%;">
+
+                <thead>
+
+                    <tr>
+                        <th>
+                            <input type="text" class="headerSearchCtrl form-control" id="txtOddDesc" placeholder="Odd Description" />
+
+                        </th>
+                        <th>
+                            <input type="text" class="headerSearchCtrl form-control" id="txtOdd_1" placeholder="Odd_1" />
+                        </th>
+                        <th>
+                            <input type="text" class="headerSearchCtrl form-control" id="txtOdd_X" placeholder="Odd_X" />
+                        </th>
+                        <th>
+                            <input type="text" class="headerSearchCtrl form-control" id="txtOdd_2" placeholder="Odd_2" />
+                        </th>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+                </thead>
+
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $(".btnSave").click(function (event) {
+        if ($('#formodd').valid()) {
+            event.preventDefault();
+            var values = {
+                "Description": $("#Description").val(),
+                "Odd_1": $("#Odd_1").val(),
+                "Odd_X": $("#Odd_X").val(),
+                "Odd_2": $("#Odd_2").val()
+
+            };
+
+            $.ajax({
+                type: "POST",
+                url: 'http://localhost:49783/odd/save',
+                data: values,
+                // contentType: "application/json;charset=utf-8",
+                success: function (data, status, xhr) {
+                    alert("The result is : " + status + ": " + data);
+                    $(".btnSaveData").click();
+                },
+                error: function (xhr) {
+                    alert(xhr.responseText);
+                    $(".btnSaveData").click();
+                }
+            });
+        }
+    });
+
+     </script>
+
+
+
+            <script type="text/javascript">
+                var tblOdds = "";
+    $(function () {
+        BindGrid();
+        if ('@TempData["Status"]' == "1")
+        {
+          toastr.success("Odd added successfully!");
+        }
+        else if ('@TempData["Status"]'== "2")
+        {
+            toastr.success("Odd updated successfully!");
+        }
+
+    });
+       function BindGrid() {
+
+
+           tblOdds = $("#tblOdds")
+            .on('order.dt', function (a, b, c) {
+                $("#tblOdds").find("th:eq(" + c[0].col + ")").attr("title", c[0].dir);
+            })
+            .DataTable({
+                "dom": '<"visibleColumn"lBf>rtip<"clear">',
+                "processing": true, // for show progress bar while loading
+                "serverSide": true, // if it is true the preocess is done on server side
+                "filter": true, // disables search box               
+                "pagingType": "full_numbers",
+                "orderMulti": false, // disable multiple column loading at once
+                "ajax": {
+                    "url": "/Odd/GetOdds",
+                    "type": "POST",
+                    "datatype": "json",
+                    'data': function (p) {
+
+                        p.Description = $('#txtOddDesc').val();
+                        p.Odd_1 = $('#txtOdd_1').val();
+                        p.Odd_X = $('#txtOdd_X').val();
+                        p.Odd_2 = $('#txtOdd_2').val();
+
+                    }
+                },
+
+                "columnDefs": [
+
+                    { "targets": [0], "visible": true, "searchable": true, "orderable": true, "width": "20%"},
+                    { "targets": [1], "visible": true, "searchable": true, "orderable": true, "width": "20%" },
+                    { "targets": [2], "visible": true, "searchable": true, "orderable": true, "width": "20%"},
+                    { "targets": [3], "visible": true, "searchable": true, "orderable": true, "width": "20%" },
+
+                          { "targets": [4], "visible": false, "searchable": true, "orderable": true },
+
+                ],
+
+                //binding data with columns
+                "columns": [
+
+                    { "data": "Description", "name": "Description", "width": "20%"},
+                    { "data": "Odd_1", "name": "Odd_1", "width": "20%"},
+                    { "data": "Odd_X", "name": "Odd_X", "width": "20%"},
+                    { "data": "Odd_2", "name": "Odd_2", "width": "20%"},
+
+
+
+                         {
+                             data: "Id",
+                             className: "gridid",
+                             visible: false
+                         },
+                         {
+                             data: null,
+                             sortable: false,
+                             className: "center",
+                             render: function (data, type, row) {
+                                 var data = "";
+                                 @if (true)
+                                 {
+                                     <text>   data = '<a style="cursor: pointer" class="textunderline" href="javascript:;" onclick="editRow(' + row.Id + ')">Edit</a>';</text>
+                                 }
+                                @if (true)
+                                {
+                                    <text> data += ' <a style="cursor: pointer" class="textunderline" href="javascript:;" onclick="return DeleteRow(' + row.Id + ')">Delete</a>';</text>
+                                }
+
+                                 return data;
+                             }
+
+                         }
+                ]
+
+            });
+
+
+    }
+       function ReloadGrid(tblObject) {
+           tblObject.ajax.reload();
+       }
+       $(".headerSearchCtrl").on("click", function (evt) {
+
+           evt.stopImmediatePropagation();
+           evt.stopPropagation();
+           evt.preventDefault();
+
+       });
+
+       $(".headerSearchCtrl").on("keyup", function (event) {
+
+           var code = event.which || event.keyCode;
+
+           if ((code >= 65 && code <= 90) || (code >= 48 && code <= 57) || code == 46 || code == 8 || (code >= 96 && code <= 105)) {
+
+               if ($(this).val().length >= 1) {
+                   ReloadGrid(tblOdds);
+                   status = 0;
+               }
+               else if ($.trim($(this).val()) == "" && status == 0) {
+                   ReloadGrid(tblOdds);
+                   status = 1;
+               }
+
+           }
+       });
+
+
+       function Clearcontrols() {
+           $("#Description,#Odd_1,#Odd_X,#Odd_2").val('');                   
+           $('.field-validation-error').html('');
+
+       }
+
+       function editRow(id) {
+           Clearcontrols();
+           $.ajax({
+               url: '/Odd/GetOddById',
+               dataType: 'json',
+               data: { "Id": id },
+               type: "POST",
+               success: function (resp) {
+
+                   $("#Id").val(resp.Id);
+                   $("#Description").val(resp.Description);
+                   $("#Odd_1").val(resp.Odd_1);
+                   $("#Odd_X").val(resp.Odd_X);
+                   $("#Odd_2").val(resp.Odd_2);  
+                  
+               },
+               error: function (req, status, err) {
+                   console.log('something went wrong', status, err);
+               }
+
+           });
+       }
+
+       function DeleteRow(id) {
+
+           if (confirm('Are you sure want to delete this record?')) {
+               $.ajax({
+                   url: '/Odd/DeleteOdd',
+                   dataType: 'json',
+                   data: { "id": id },
+                   type: "POST",
+                   success: function (resp) {
+                       toastr.success("Odd deleted successfully!");
+                       ReloadGrid(tblOdds);
+                      
+                   },
+                   error: function (req, status, err) {
+                       console.log('something went wrong', status, err);
+                   }
+               });
+           }
+           return false;
+
+       }
+
+</script>
