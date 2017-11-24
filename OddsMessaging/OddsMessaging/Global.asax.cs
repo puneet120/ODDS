@@ -21,7 +21,7 @@ namespace OddsMessaging
         }
         protected void Application_BeginRequest()
         {
-            string[] allowedOrigin = new string[] { "http://localhost:53225", "http://localhost:54906" };
+            string[] allowedOrigin = new string[] { "http://localhost:53225", "http://localhost:50724" };
             var origin = HttpContext.Current.Request.Headers["Origin"];
             if (origin != null && allowedOrigin.Contains(origin))
             {

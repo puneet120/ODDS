@@ -86,7 +86,7 @@ namespace OddsMessaging.Controllers
 
             };
 
-            var list = new List<OddsModel>();
+            var data = new OddsModel();
 
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
@@ -103,14 +103,15 @@ namespace OddsMessaging.Controllers
                     var message = Encoding.UTF8.GetString(body);
                     var deserialized = JsonConvert.DeserializeObject<OddsModel>(message);
 
-                    list.Add(new OddsModel
+                    data= new OddsModel
                     {
                         Description = deserialized.Description,
                         Odd_1= deserialized.Odd_1,
                         Odd_X= deserialized.Odd_X,
-                        Odd_2= deserialized.Odd_2
+                        Odd_2= deserialized.Odd_2,
+                        Id= deserialized.Id
                       
-                    });
+                    };
 
 
                 };
@@ -122,7 +123,7 @@ namespace OddsMessaging.Controllers
 
                 Thread.Sleep(6000);
 
-                return Request.CreateResponse(HttpStatusCode.OK, list);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
 
 
             }
