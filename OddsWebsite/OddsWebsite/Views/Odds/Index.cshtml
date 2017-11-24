@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    var url= "http://localhost:50283";
+    var url = "http://localhost:50283";
 }
 
 
@@ -19,12 +19,11 @@
                         <th>Odd_1</th>
                         <th>Odd_X</th>
                         <th>Odd_2</th>
+                        <th style="display:none;">Id</th>
 
                     </tr>
                 </thead>
-                <tbody>
-                   
-                </tbody>
+                <tbody></tbody>
             </table>
 
 
@@ -34,25 +33,25 @@
 
 </div>
 
-<script src="@url/Scripts/jquery.signalR-2.2.2.js"></script>    
-    <script src="@url/signalr/hubs"></script>
-    <script type="text/javascript">
+<script src="@url/Scripts/jquery.signalR-2.2.2.js"></script>
+<script src="@url/signalr/hubs"></script>
+<script type="text/javascript">
         $(function () {
             // Reference the hub.
 
             $.connection.hub.url = "@url/signalr";
-           
+
             var hubNotif = $.connection.oddsHub;
 
             // Start the connection.
             $.connection.hub.start().done(function () {
-                
+
                 getAll();
             });
 
             // Notify while anyChanges.
             hubNotif.client.updatedData = function () {
-              
+
                 getAll();
             };
         });
@@ -60,25 +59,27 @@
         function getAll() {
             var model = $('#dataTable');
             $.ajax({
-                url: '@url' +'/odd/get',               
+                url: '@url' + '/odd/get',
                 type: 'POST'
-            
+
             })
                 .success(function (data) {
-                
-                    var values;
-                    for (var item in data)
-                    {
-                        values += "<tr><td>" + data[item].Description + "</td><td>" + data[item].Odd_1 + "</td>" +
-                            "<td>" + data[item].Odd_X + "</td>" +
-                            "<td>" + data[item].Odd_2 + "</td>" +
-                        
+
+                    $("#tr_" + data.Id).remove();
+
+                    if (data.Description != null)
+                    { 
+                        var value = "<tr id='tr_"+data.Id+"'><td>" + data.Description + "</td>" +
+                        "<td>" + data.Odd_1 + "</td>" +
+                        "<td>" + data.Odd_X + "</td>" +
+                        "<td>" + data.Odd_2 + "</td>" +   
                         "</tr > ";
-                    }
-                    
-                    $('.tbl tbody').prepend(values);
+
+
+                    $('.tbl tbody').prepend(value);
+                }
 
                 })
             //.error(function (e) { alert(e); });
         }
-    </script>
+</script>
