@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    var url= "http://localhost:50283";
+}
+
+
+<div class="clearfix">&nbsp;</div>
+<div class="clearfix">&nbsp;</div>
+<div class="container">
+    <div class="table-responsive">
+        <h3>View Odds</h3>
+        <hr />
+        <div id="dataTable">
+            <table class="table table-bordered table-striped tbl">
+                <thead>
+                    <tr>
+                        <th>Odd Description</th>
+                        <th>Odd_1</th>
+                        <th>Odd_X</th>
+                        <th>Odd_2</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+    <div class="clearfix">&nbsp;</div>
+
+</div>
+
+<script src="@url/Scripts/jquery.signalR-2.2.2.js"></script>    
+    <script src="@url/signalr/hubs"></script>
+    <script type="text/javascript">
+        $(function () {
+            // Reference the hub.
+
+            $.connection.hub.url = "@url/signalr";
+           
+            var hubNotif = $.connection.oddsHub;
+
+            // Start the connection.
+            $.connection.hub.start().done(function () {
+                
+                getAll();
+            });
+
+            // Notify while anyChanges.
+            hubNotif.client.updatedData = function () {
+              
+                getAll();
+            };
+        });
+
+        function getAll() {
+            var model = $('#dataTable');
+            $.ajax({
+                url: '@url' +'/odd/get',               
+                type: 'POST'
+            
+            })
+                .success(function (data) {
+                
+                    var values;
+                    for (var item in data)
+                    {
+                        values += "<tr><td>" + data[item].Description + "</td><td>" + data[item].Odd_1 + "</td>" +
+                            "<td>" + data[item].Odd_X + "</td>" +
+                            "<td>" + data[item].Odd_2 + "</td>" +
+                        
+                        "</tr > ";
+                    }
+                    
+                    $('.tbl tbody').prepend(values);
+
+                })
+            //.error(function (e) { alert(e); });
+        }
+    </script>
