@@ -50,9 +50,20 @@
             });
 
             // Notify while anyChanges.
-            hubNotif.client.updatedData = function () {
+            hubNotif.client.updatedData = function (data) {              
+               
+                $("#tr_" + data.Id).remove();
 
-                getAll();
+                if (data.Description != null) {
+                    var value = "<tr id='tr_" + data.Id + "'><td>" + data.Description + "</td>" +
+                        "<td>" + data.Odd_1 + "</td>" +
+                        "<td>" + data.Odd_X + "</td>" +
+                        "<td>" + data.Odd_2 + "</td>" +
+                        "</tr > ";
+
+
+                    $('.tbl tbody').prepend(value);
+                }
             };
         });
 
@@ -63,23 +74,8 @@
                 type: 'POST'
 
             })
-                .success(function (data) {
-
-                    $("#tr_" + data.Id).remove();
-
-                    if (data.Description != null)
-                    { 
-                        var value = "<tr id='tr_"+data.Id+"'><td>" + data.Description + "</td>" +
-                        "<td>" + data.Odd_1 + "</td>" +
-                        "<td>" + data.Odd_X + "</td>" +
-                        "<td>" + data.Odd_2 + "</td>" +   
-                        "</tr > ";
-
-
-                    $('.tbl tbody').prepend(value);
-                }
-
+                .success(function (data) {      
                 })
-            //.error(function (e) { alert(e); });
+            
         }
 </script>
