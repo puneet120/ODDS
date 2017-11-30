@@ -7,13 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OddsBusiness", "OddsBusines
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OddsBusiness.Tests", "OddsBusiness.Tests\OddsBusiness.Tests.csproj", "{923F9184-E471-495B-B5DB-69F9150C0214}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OddsBusiness.Data.Core", "OddsBusiness.Core\OddsBusiness.Data.Core.csproj", "{5203B679-D744-45B6-8054-18698D7DFA47}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OddsBusiness.Data.Core", "OddsBusiness.Data.Core\OddsBusiness.Data.Core.csproj", "{5203B679-D744-45B6-8054-18698D7DFA47}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OddsBusiness.Data", "OddsBusiness.Data\OddsBusiness.Data.csproj", "{2F53FDAF-81F1-422F-B133-B908DE89AA9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OddsBusiness.Data.ORM", "OddsBusiness.ORM\OddsBusiness.Data.ORM.csproj", "{D035EB50-11DB-4CFE-AB04-7F2915143739}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OddsBusiness.Data.ORM", "OddsBusiness.Data.ORM\OddsBusiness.Data.ORM.csproj", "{D035EB50-11DB-4CFE-AB04-7F2915143739}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OddsBusiness.Data.Repository", "OddsBusiness.Repository\OddsBusiness.Data.Repository.csproj", "{716FF652-3976-4E18-8233-E1CFB1AB1212}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OddsBusiness.Data.Repository", "OddsBusiness.Data.Repository\OddsBusiness.Data.Repository.csproj", "{716FF652-3976-4E18-8233-E1CFB1AB1212}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

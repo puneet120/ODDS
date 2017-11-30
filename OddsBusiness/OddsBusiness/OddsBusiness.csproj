@@ -301,7 +301,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OddsBusiness.Core\OddsBusiness.Data.Core.csproj">
+    <ProjectReference Include="..\OddsBusiness.Data.Core\OddsBusiness.Data.Core.csproj">
       <Project>{5203b679-d744-45b6-8054-18698d7dfa47}</Project>
       <Name>OddsBusiness.Data.Core</Name>
     </ProjectReference>
@@ -309,11 +309,11 @@
       <Project>{2f53fdaf-81f1-422f-b133-b908de89aa9c}</Project>
       <Name>OddsBusiness.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OddsBusiness.ORM\OddsBusiness.Data.ORM.csproj">
+    <ProjectReference Include="..\OddsBusiness.Data.ORM\OddsBusiness.Data.ORM.csproj">
       <Project>{d035eb50-11db-4cfe-ab04-7f2915143739}</Project>
       <Name>OddsBusiness.Data.ORM</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OddsBusiness.Repository\OddsBusiness.Data.Repository.csproj">
+    <ProjectReference Include="..\OddsBusiness.Data.Repository\OddsBusiness.Data.Repository.csproj">
       <Project>{716ff652-3976-4e18-8233-e1cfb1ab1212}</Project>
       <Name>OddsBusiness.Data.Repository</Name>
     </ProjectReference>
