@@ -3,3 +3,8 @@ D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Core\bin\Debug\Odds
 D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Core\obj\Debug\OddsBusiness.Data.Core.csproj.CoreCompileInputs.cache
 D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Core\obj\Debug\OddsBusiness.Core.dll
 D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Core\obj\Debug\OddsBusiness.Core.pdb
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Data.Core\bin\Debug\OddsBusiness.Core.dll
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Data.Core\bin\Debug\OddsBusiness.Core.pdb
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Data.Core\obj\Debug\OddsBusiness.Data.Core.csproj.CoreCompileInputs.cache
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Data.Core\obj\Debug\OddsBusiness.Core.dll
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Data.Core\obj\Debug\OddsBusiness.Core.pdb
