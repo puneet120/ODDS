@@ -52,3 +52,8 @@ D:\Assignment-Client\OddsAdmin\OddsAdmin\OddsAdmin\bin\Autofac.Integration.Mvc.d
 D:\Assignment-Client\OddsAdmin\OddsAdmin\OddsAdmin\bin\Autofac.xml
 D:\Assignment-Client\OddsAdmin\OddsAdmin\OddsAdmin\bin\Odds.Services.dll.config
 D:\Assignment-Client\OddsAdmin\OddsAdmin\OddsAdmin\bin\Autofac.Integration.Mvc.xml
+D:\Assignment-Client\OddsAdmin\OddsAdmin\OddsAdmin\bin\Castle.Core.dll
+D:\Assignment-Client\OddsAdmin\OddsAdmin\OddsAdmin\bin\Moq.dll
+D:\Assignment-Client\OddsAdmin\OddsAdmin\OddsAdmin\bin\Castle.Core.xml
+D:\Assignment-Client\OddsAdmin\OddsAdmin\OddsAdmin\bin\Moq.pdb
+D:\Assignment-Client\OddsAdmin\OddsAdmin\OddsAdmin\bin\Moq.xml

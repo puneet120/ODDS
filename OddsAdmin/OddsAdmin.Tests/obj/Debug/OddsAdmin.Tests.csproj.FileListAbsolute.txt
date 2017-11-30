@@ -45,3 +45,8 @@ D:\Assignment-Client\OddsAdmin\OddsAdmin\OddsAdmin.Tests\bin\Debug\Autofac.Integ
 D:\Assignment-Client\OddsAdmin\OddsAdmin\OddsAdmin.Tests\bin\Debug\Autofac.xml
 D:\Assignment-Client\OddsAdmin\OddsAdmin\OddsAdmin.Tests\bin\Debug\Odds.Services.dll.config
 D:\Assignment-Client\OddsAdmin\OddsAdmin\OddsAdmin.Tests\bin\Debug\Autofac.Integration.Mvc.xml
+D:\Assignment-Client\OddsAdmin\OddsAdmin\OddsAdmin.Tests\bin\Debug\Castle.Core.dll
+D:\Assignment-Client\OddsAdmin\OddsAdmin\OddsAdmin.Tests\bin\Debug\Moq.dll
+D:\Assignment-Client\OddsAdmin\OddsAdmin\OddsAdmin.Tests\bin\Debug\Castle.Core.xml
+D:\Assignment-Client\OddsAdmin\OddsAdmin\OddsAdmin.Tests\bin\Debug\Moq.pdb
+D:\Assignment-Client\OddsAdmin\OddsAdmin\OddsAdmin.Tests\bin\Debug\Moq.xml

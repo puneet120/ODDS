@@ -14,11 +14,11 @@ namespace OddsAdmin.Web.Controllers
         private ILoginRepository _repo;
         private ILoggerRepository _loggerrepo;
 
-        public LoginController(ILoginRepository repo,
-            ILoggerRepository loggerrepo)
+        public LoginController(ILoginRepository repo,ILoggerRepository loggerrepo
+           )
         {
             this._repo = repo;
-            _loggerrepo = loggerrepo;
+            this._loggerrepo = loggerrepo;
         }
 
         #region Index
@@ -64,24 +64,13 @@ namespace OddsAdmin.Web.Controllers
         {
             try
             {
-                var result = _repo.CheckLogin(model.Username, model.Password);
-                //if (result == true)
-                //{
-                   
-                //    _loggerrepo.LogFileWrite("Successfull", string.Empty);
-                //    //  System.IO.File.ReadAllText
-                //}
-                //else
-                //{
-                //    _loggerrepo.LogFileWrite("Invalid Attempt", string.Empty);
-
-
-                //}
+                var result = _repo.CheckLogin(model.Username, model.Password);              
                 return result;
             }
             catch (Exception ex)
             {
-                return true;
+                _loggerrepo.LogFileWrite(ex.Message, ex.StackTrace);
+                return false;
             }
 
         }
