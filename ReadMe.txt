@@ -33,11 +33,14 @@ It also contains the information for setting up the dev environment.
 
 **Assumptions**
 
-* MVC 5 with Code first approach using Entity Framework is preferred due to lot of experience working in same technology stack.
+*  Basic Implementation of RabbitMQ has been done to satisfy the current need.
 
-*  Jquery Data Table is used for UI as it is light weight and easily configured.
+*  Basic set up of SignalR has been done to support the broadcasting need.
 
-* Odds Website Public , Odds Admin and Business logic all are hosted separately and communication between them is done through API's
+*   Odds Website Public , Odds Admin and Business logic all are hosted separately and communication between them is done through API's because Admin and Public have different business requirements
+  . It is assumed that website and public will have scaling requirement so kept it separately.
+
+* I have hosted SignalR on different server other than public website assuming push notification will have different scaling requirement.
 
 
 
@@ -92,7 +95,6 @@ RabbitMQ to provide scalable pub-sub option. it provides the services for asynch
 
 * Sql Server- SQl Server 2008 and above, express/standard edition*
 
-*
 
 ** Install development frameworks/tools ** 
 
@@ -109,7 +111,8 @@ RabbitMQ to provide scalable pub-sub option. it provides the services for asynch
 2. Host all different projects separately and it will work as expected and nothing for you to setup additionally as i have done some configuration hardcoaded for your ease purpose.
 
 
-## Known Issues ##
+## Important Notes ##
 
-1. I did not use any testing framework for front end as i am not familiar with it so i skipped it for now for saving time but i will look at some of the testing frameworks in future.
-2. I forgot to create different branches for all user stories as mentioned in document so i created only 3 branch as of now i.e OddsAdmin, OddsPublicWebsite, OddsBusiness
+1. Jquery Data Table grid has been used for front end development considering the given timeline and prior experience.
+2. Unit Test cases have been performed on Controller level as of now.
+3. Branches have been created Module wise instead of story wise.
