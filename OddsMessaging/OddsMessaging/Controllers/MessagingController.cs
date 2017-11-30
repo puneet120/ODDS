@@ -47,6 +47,12 @@ namespace OddsMessaging.Controllers
         public void Delete(int id)
         {
         }
+
+        /// <summary>
+        /// Add Odds data into Messaging queue using RabbitMQ
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("odd/save")]
         public IHttpActionResult PostOddDetails(OddsModel model
@@ -77,6 +83,11 @@ namespace OddsMessaging.Controllers
 
         }
 
+        /// <summary>
+        /// Subscriber listen to new Messages from Rabbit MQ and Broadcast using SignalR
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("odd/get")]
         public HttpResponseMessage GetAllOdds()
