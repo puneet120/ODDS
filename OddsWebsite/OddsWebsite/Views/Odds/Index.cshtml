@@ -55,14 +55,24 @@
                 $("#tr_" + data.Id).remove();
 
                 if (data.Description != null) {
-                    var value = "<tr id='tr_" + data.Id + "'><td>" + data.Description + "</td>" +
+
+                    var $newRow = $("<tr id='tr_" + data.Id + "'><td>" + data.Description + "</td>" +
                         "<td>" + data.Odd_1 + "</td>" +
                         "<td>" + data.Odd_X + "</td>" +
                         "<td>" + data.Odd_2 + "</td>" +
-                        "</tr > ";
+                        "</tr >");
+
+                    $('.tbl tbody').after($newRow);
+                    $newRow.effect("highlight", { color: '#FFCCCC' }, 3000);
+
+                    //var value = "<tr id='tr_" + data.Id + "'><td>" + data.Description + "</td>" +
+                    //    "<td>" + data.Odd_1 + "</td>" +
+                    //    "<td>" + data.Odd_X + "</td>" +
+                    //    "<td>" + data.Odd_2 + "</td>" +
+                    //    "</tr > ";
 
 
-                    $('.tbl tbody').prepend(value);
+                    //$('.tbl tbody').prepend(value).effect("highlight", { color: '#ff0000' }, 3000);
                 }
             };
         });
