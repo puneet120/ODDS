@@ -110,7 +110,9 @@
                     }
 
                     $('.btnSave').val("Save");
-                    CallMessaging(data);
+                    Clearcontrols();
+                    $('#Id').val('');
+                   // CallMessaging(data);
 
                 },
                 error: function (xhr) {
@@ -124,33 +126,7 @@
     });
 
 
-    function CallMessaging(Id)
-    {
-        var newvalues = {
-            "Description": $("#Description").val(),
-            "Odd_1": $("#Odd_1").val(),
-            "Odd_X": $("#Odd_X").val(),
-            "Odd_2": $("#Odd_2").val(),
-            "Id": Id
 
-        };
-
-        Clearcontrols();
-        $('#Id').val('');
-        $.ajax({
-            type: "POST",
-            url: '@url/odd/save',
-            data: newvalues,
-            // contentType: "application/json;charset=utf-8",
-            success: function (data, status, xhr) {
-
-            },
-            error: function (xhr) {
-                alert(xhr.responseText);
-
-            }
-        });
-    }
 </script>
 
 
