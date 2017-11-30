@@ -1,0 +1,5 @@
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Core\bin\Debug\OddsBusiness.Core.dll
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Core\bin\Debug\OddsBusiness.Core.pdb
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Core\obj\Debug\OddsBusiness.Core.csproj.CoreCompileInputs.cache
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Core\obj\Debug\OddsBusiness.Core.dll
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Core\obj\Debug\OddsBusiness.Core.pdb
