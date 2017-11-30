@@ -1,7 +1,7 @@
 ﻿@model OddsAdmin.Models.LoginModel
 @{
     ViewBag.Title = "Login";
-  
+    string  url = "http://localhost:50283";
 }
 
 <div class="clearfix">&nbsp;</div>
@@ -11,6 +11,7 @@
         <h3>Account Login</h3>
     @using (Html.BeginForm("Index", "Login", FormMethod.Post))
     {
+        @Html.HiddenFor(m=>m.Result)
      @Html.AntiForgeryToken()
 
         @Html.ValidationSummary(true)
@@ -27,7 +28,10 @@
                     <td class="col-md-4">@Html.ValidationMessageFor(m => m.Password)</td>
                 </tr>
                 <tr>
-                    <td class="text-right" colspan="2"><input type="submit" value="Login" class="btn btn-primary" /></td>
+                    <td class="text-right" colspan="2">
+                    <input type="button" value="Login" class="btn btn-primary" onclick="Login()" />
+                        <input type="submit" value="Login" class="btn btn-primary" id="btnLogin" style="display:none;" />
+                    </td>
                 </tr>
              
             </tbody>
@@ -38,4 +42,25 @@
 </div>
 <script type="text/javascript">
     $('.divhead').hide();
+    function Login() {
+        var newvalues = {
+            "Username": $("#Username").val(),
+            "Password": $("#Password").val(),
+          
+        };      
+        $.ajax({
+            type: "POST",
+            url: '@url/login/user',
+            data: newvalues,
+            // contentType: "application/json;charset=utf-8",
+            success: function (data, status, xhr) {
+                $('#Result').val(data);
+                $('#btnLogin').click();
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+
+            }
+        });
+    }
 </script>

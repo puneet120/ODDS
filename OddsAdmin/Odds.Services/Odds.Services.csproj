@@ -62,16 +62,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Odds.Core\Odds.Core.csproj">
-      <Project>{92853600-7c69-4a42-a129-b5c954fe9764}</Project>
-      <Name>Odds.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Odds.Data\Odds.Data.csproj">
-      <Project>{99500b4a-6601-4efb-b2bf-30871ae0ab7b}</Project>
-      <Name>Odds.Data</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>

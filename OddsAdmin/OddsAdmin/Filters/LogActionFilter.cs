@@ -1,6 +1,4 @@
 ﻿
-using Odds.Core.Entity;
-using Odds.Services.Interfaces;
 using System.Web.Mvc;
 
 namespace OddsAdmin.Filters

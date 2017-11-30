@@ -113,14 +113,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Odds.Core\Odds.Core.csproj">
-      <Project>{92853600-7c69-4a42-a129-b5c954fe9764}</Project>
-      <Name>Odds.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Odds.Services\Odds.Services.csproj">
-      <Project>{7e85eab8-17e1-4871-88e9-db33fda93813}</Project>
-      <Name>Odds.Services</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OddsAdmin\OddsAdmin.csproj">
       <Project>{F1A98671-80A9-4C9B-9E89-F7C66594B5EF}</Project>
       <Name>OddsAdmin</Name>

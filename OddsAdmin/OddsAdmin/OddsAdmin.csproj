@@ -151,14 +151,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OddController.cs" />
-    <Compile Include="Filters\ExceptionFilter.cs" />
     <Compile Include="Filters\LogActionFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -251,20 +249,6 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Odds.Core\Odds.Core.csproj">
-      <Project>{92853600-7c69-4a42-a129-b5c954fe9764}</Project>
-      <Name>Odds.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Odds.Data\Odds.Data.csproj">
-      <Project>{99500b4a-6601-4efb-b2bf-30871ae0ab7b}</Project>
-      <Name>Odds.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Odds.Services\Odds.Services.csproj">
-      <Project>{7e85eab8-17e1-4871-88e9-db33fda93813}</Project>
-      <Name>Odds.Services</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

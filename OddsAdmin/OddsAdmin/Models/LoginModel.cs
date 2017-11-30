@@ -18,6 +18,8 @@ namespace OddsAdmin.Models
         [StringLength(50)]
         [AllowHtml]
         public string Password { get; set; }
+
+        public bool Result { get; set; }
        
     }
 }

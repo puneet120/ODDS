@@ -1,7 +1,7 @@
 ﻿@model OddsAdmin.Models.OddModel
 @{
     ViewBag.Title = "Odds";
-
+    string url = "http://localhost:50283";
 }
 
 @Scripts.Render("~/bundles/datatable")
@@ -97,7 +97,7 @@
             };
             $.ajax({
                 type: "POST",
-                url: '/Odd/Index',
+                url: '@url/odds/save',
                 data: values,
                 // contentType: "application/json;charset=utf-8",
                 success: function (data, status, xhr) {                  
@@ -139,7 +139,7 @@
         $('#Id').val('');
         $.ajax({
             type: "POST",
-            url: 'http://localhost:50283/odd/save',
+            url: '@url/odd/save',
             data: newvalues,
             // contentType: "application/json;charset=utf-8",
             success: function (data, status, xhr) {
@@ -185,7 +185,7 @@
                 "order": [],
                 "orderMulti": false, // disable multiple column loading at once
                 "ajax": {
-                    "url": "/Odd/GetOdds",
+                    "url": "@url/odds/get",
                     "type": "POST",
                     "datatype": "json",
                     'data': function (p) {
@@ -288,7 +288,7 @@
        function editRow(id) {
            Clearcontrols();
            $.ajax({
-               url: '/Odd/GetOddById',
+               url: '@url/odd/getbyid',
                dataType: 'json',
                data: { "Id": id },
                type: "POST",
@@ -313,9 +313,9 @@
            if (confirm('Are you sure want to delete this record?')) {
                Clearcontrols();
                $.ajax({
-                   url: '/Odd/DeleteOdd',
+                   url: '@url/odd/delete',
                    dataType: 'json',
-                   data: { "id": id },
+                   data: { "Id": id },
                    type: "POST",
                    success: function (resp) {
                        toastr.success("Odd deleted successfully!");
