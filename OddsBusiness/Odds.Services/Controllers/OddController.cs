@@ -233,7 +233,7 @@ namespace OddsBusiness.Controllers
             catch (Exception ex)
             {
                 _loggerrepo.Log(ex.Message, ex.StackTrace);
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, 0);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
 

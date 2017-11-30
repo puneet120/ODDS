@@ -16,12 +16,14 @@ namespace OddsBusiness.Tests.Controllers
 {
     [TestClass]
     public class OddsControllerTest
-    {  
+    {
         /// <summary>
         /// Test Odd Save Update method py passing data model null
         /// </summary>
+        
+
         [TestMethod]
-        public void OddSaveUpdateTest_datamodelnull()
+        public void OddSaveUpdate_input_is_null_Returns_500_and_error_is_logged()
         {
             // Arrange: Setup all o\objects
             var mockRepo = new Mock<IOddRepository>();           
@@ -32,18 +34,17 @@ namespace OddsBusiness.Tests.Controllers
             OddController controller = new OddController(mockRepo.Object,loggermockRepo.Object);
 
             // Act: Save the Odd
-            HttpResponseMessage result = controller.SaveUpdateOdd(It.IsAny<OddsModel>());
+            HttpResponseMessage result = controller.SaveUpdateOdd(null);
 
             // Verify the method was called
+
+            // Assert: 
+            Assert.IsNotNull(result);
+            Assert.AreEqual(System.Net.HttpStatusCode.InternalServerError, result.StatusCode);
+            
             loggermockRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(1));
 
-            mockRepo.Verify(x => x.SaveUpdateOdd(It.IsAny<Odd>()), Times.Exactly(0)); // Save Update Odd method will not be verified due to model null error
-           
-            // Assert: 
-            Assert.AreEqual(0, result);
-            Assert.IsNotNull(result);
-           
-           
+
         }
 
         /// <summary>
