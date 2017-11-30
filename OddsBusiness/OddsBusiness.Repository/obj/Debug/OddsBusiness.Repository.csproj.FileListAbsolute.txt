@@ -1,0 +1,14 @@
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Repository\obj\Debug\OddsBusiness.Repository.csprojResolveAssemblyReference.cache
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Repository\obj\Debug\OddsBusiness.Repository.csproj.CoreCompileInputs.cache
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Repository\bin\Debug\OddsBusiness.Repository.dll
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Repository\bin\Debug\OddsBusiness.Repository.pdb
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Repository\bin\Debug\Autofac.dll
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Repository\bin\Debug\EntityFramework.dll
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Repository\bin\Debug\EntityFramework.SqlServer.dll
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Repository\bin\Debug\OddsBusiness.Core.dll
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Repository\bin\Debug\OddsBusiness.ORM.dll
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Repository\bin\Debug\OddsBusiness.Core.pdb
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Repository\bin\Debug\OddsBusiness.ORM.pdb
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Repository\bin\Debug\Autofac.xml
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Repository\obj\Debug\OddsBusiness.Repository.dll
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.Repository\obj\Debug\OddsBusiness.Repository.pdb

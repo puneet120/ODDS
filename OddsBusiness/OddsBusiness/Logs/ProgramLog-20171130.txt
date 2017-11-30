@@ -1,0 +1,4 @@
+30-11-2017 14:52:55 - Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at OddsBusiness.Controllers.OddController.GetOdds() in D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness\Controllers\OddController.cs:line 118
