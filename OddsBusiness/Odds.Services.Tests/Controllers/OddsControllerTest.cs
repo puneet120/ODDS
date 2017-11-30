@@ -19,14 +19,13 @@ namespace OddsBusiness.Tests.Controllers
     {
         /// <summary>
         /// Test Odd Save Update method py passing data model null
-        /// </summary>
-        
+        /// </summary>       
 
         [TestMethod]
         public void OddSaveUpdate_input_is_null_Returns_500_and_error_is_logged()
         {
             // Arrange: Setup all o\objects
-            var mockRepo = new Mock<IOddRepository>();           
+            var mockRepo = new Mock<IOddRepository>();
             var data = mockRepo.Setup(x => x.SaveUpdateOdd(It.IsAny<Odd>())).Returns(0);
 
             var loggermockRepo = new Mock<ILogger>();
@@ -36,7 +35,7 @@ namespace OddsBusiness.Tests.Controllers
             // Act: Save the Odd
             HttpResponseMessage result = controller.SaveUpdateOdd(null);
 
-            // Verify the method was called
+           
 
             // Assert: 
             Assert.IsNotNull(result);
@@ -51,7 +50,7 @@ namespace OddsBusiness.Tests.Controllers
         /// Test Odd Save Update method py passing data repository null
         /// </summary>
         [TestMethod]
-        public void OddSaveUpdateTest_reponull()
+        public void OddSaveUpdate_repo_is_null()
         {
             // Arrange: Setup all o\objects
             var mockRepo = new Mock<IOddRepository>();
@@ -65,15 +64,11 @@ namespace OddsBusiness.Tests.Controllers
             OddsModel model = new OddsModel();
             HttpResponseMessage result = controller.SaveUpdateOdd(model);
 
-            // Verify the method was called
-            loggermockRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(1));
-
-            mockRepo.Verify(x => x.SaveUpdateOdd(It.IsAny<Odd>()), Times.Exactly(0)); // Save Update Odd method will not be verified due to model null error
-
             // Assert: 
-            Assert.AreEqual(0, result);
             Assert.IsNotNull(result);
+            Assert.AreEqual(System.Net.HttpStatusCode.InternalServerError, result.StatusCode);
 
+            loggermockRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(1));
 
         }
 
@@ -81,7 +76,7 @@ namespace OddsBusiness.Tests.Controllers
         /// Test Odd Save Update method working properly
         /// </summary>
         [TestMethod]
-        public void OddSaveUpdateTest()
+        public void OddSaveUpdate_valid_input()
         {
             // Arrange: Setup all o\objects
             var mockRepo = new Mock<IOddRepository>();
@@ -111,7 +106,7 @@ namespace OddsBusiness.Tests.Controllers
         /// Test GetOdds method with Request.Form null
         /// </summary>
         [TestMethod]
-        public void GetOddsTest_RequestFormNull()
+        public void GetOdds_request_form_is_null()
         {
             // Arrange: Setup all o\objects
             var mockRepo = new Mock<IOddRepository>();
@@ -133,6 +128,8 @@ namespace OddsBusiness.Tests.Controllers
             // Assert:            
             Assert.IsNotNull(result);
 
+            Assert.AreEqual(System.Net.HttpStatusCode.InternalServerError, result.StatusCode);
+
         }
 
 
@@ -140,7 +137,7 @@ namespace OddsBusiness.Tests.Controllers
         /// Test GetOdd by id with id equals to 0
         /// </summary>
         [TestMethod]
-        public void GetOddbyId_Idequals0()
+        public void GetOddbyId_Id_equals_0()
         {
             // Arrange: Setup all o\objects
             var mockRepo = new Mock<IOddRepository>();
@@ -151,7 +148,8 @@ namespace OddsBusiness.Tests.Controllers
             OddController controller = new OddController(mockRepo.Object, loggermockRepo.Object);
 
             // Act: Save the Odd
-            OddsModel model = new OddsModel();           
+            OddsModel model = new OddsModel();
+            model.Id = 0;
             HttpResponseMessage result = controller.GetOddById(model);
 
             // Verify the method was called
@@ -162,13 +160,15 @@ namespace OddsBusiness.Tests.Controllers
             // Assert:            
             Assert.IsNotNull(result);
 
+            Assert.AreEqual(System.Net.HttpStatusCode.InternalServerError, result.StatusCode);
+
         }
 
         /// <summary>
         /// Test DeleteOdd by id with id equals to 0
         /// </summary>
         [TestMethod]
-        public void DeleteOddbyId_Idequals0()
+        public void DeleteOddbyId_Id_equals_0()
         {
             // Arrange: Setup all o\objects
             var mockRepo = new Mock<IOddRepository>();
