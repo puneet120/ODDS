@@ -81,7 +81,7 @@ namespace OddsBusiness.Tests.Controllers
             mockRepo.Verify(x => x.CheckLogin(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(0));
 
             // Assert: 
-            Assert.AreEqual(expectedresult, result);
+            Assert.AreEqual(System.Net.HttpStatusCode.InternalServerError, result.StatusCode);
             Assert.IsNotNull(result);           
 
         }
