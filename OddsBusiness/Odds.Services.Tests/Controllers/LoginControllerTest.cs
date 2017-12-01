@@ -20,7 +20,7 @@ namespace OddsBusiness.Tests.Controllers
         /// Test login method py passing data model null
         /// </summary>
         [TestMethod]
-        public void LoginTest_datamodelnull()
+        public void Login_input_is_null()
         {
             // Arrange: Setup all o\objects
             var mockRepo = new Mock<IUserRepository>();
@@ -50,7 +50,7 @@ namespace OddsBusiness.Tests.Controllers
         /// Test login method by passing data repository null
         /// </summary>
         [TestMethod]
-        public void LoginTest_datareponull()
+        public void Login_repo_is_null()
         {
             // Arrange: Setup all o\objects
             var mockRepo = new Mock<IUserRepository>();
