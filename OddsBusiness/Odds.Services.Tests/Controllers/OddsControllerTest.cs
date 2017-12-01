@@ -11,6 +11,7 @@ using OddsBusiness.Controllers;
 using OddsBusiness.Models;
 using System.Net.Http;
 using OddsBusiness.Core.Entity;
+using System.Web.Http;
 
 namespace OddsBusiness.Tests.Controllers
 {
@@ -30,7 +31,12 @@ namespace OddsBusiness.Tests.Controllers
 
             var mockloggerRepo = new Mock<ILogger>();
             var loggerdata = mockloggerRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
-            OddController controller = new OddController(mockRepo.Object,mockloggerRepo.Object);
+            OddController controller = new OddController(mockRepo.Object, mockloggerRepo.Object)
+            {
+
+                Request = new System.Net.Http.HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
+            };
 
             // Act: Save the Odd
             HttpResponseMessage result = controller.SaveUpdateOdd(null);
@@ -58,7 +64,12 @@ namespace OddsBusiness.Tests.Controllers
 
             var mockloggerRepo = new Mock<ILogger>();
             var loggerdata = mockloggerRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
-            OddController controller = new OddController(null, mockloggerRepo.Object);
+            OddController controller = new OddController(null, mockloggerRepo.Object)
+            {
+
+                Request = new System.Net.Http.HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
+            };
 
             // Act: Save the Odd
             OddsModel model = new OddsModel();
@@ -84,7 +95,12 @@ namespace OddsBusiness.Tests.Controllers
 
             var mockloggerRepo = new Mock<ILogger>();
             var loggerdata = mockloggerRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
-            OddController controller = new OddController(mockRepo.Object, mockloggerRepo.Object);
+            OddController controller = new OddController(mockRepo.Object, mockloggerRepo.Object)
+            {
+
+                Request = new System.Net.Http.HttpRequestMessage(),
+               Configuration = new HttpConfiguration()
+            };
 
             // Act: Save the Odd
             OddsModel model = new OddsModel();
@@ -114,7 +130,12 @@ namespace OddsBusiness.Tests.Controllers
 
             var mockloggerRepo = new Mock<ILogger>();
             var loggerdata = mockloggerRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
-            OddController controller = new OddController(mockRepo.Object, mockloggerRepo.Object);
+            OddController controller = new OddController(mockRepo.Object, mockloggerRepo.Object)
+            {
+
+                Request = new System.Net.Http.HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
+            };
 
             // Act: Save the Odd
             OddsModel model = new OddsModel();
@@ -145,7 +166,12 @@ namespace OddsBusiness.Tests.Controllers
 
             var mockloggerRepo = new Mock<ILogger>();
             var loggerdata = mockloggerRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
-            OddController controller = new OddController(mockRepo.Object, mockloggerRepo.Object);
+            OddController controller = new OddController(mockRepo.Object, mockloggerRepo.Object)
+            {
+
+                Request = new System.Net.Http.HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
+            };
 
             // Act: Save the Odd
             OddsModel model = new OddsModel();
@@ -176,7 +202,12 @@ namespace OddsBusiness.Tests.Controllers
 
             var mockloggerRepo = new Mock<ILogger>();
             var loggerdata = mockloggerRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
-            OddController controller = new OddController(mockRepo.Object, mockloggerRepo.Object);
+            OddController controller = new OddController(mockRepo.Object, mockloggerRepo.Object)
+            {
+
+                Request = new System.Net.Http.HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
+            };
 
             // Act: Save the Odd
             OddsModel model = new OddsModel();
