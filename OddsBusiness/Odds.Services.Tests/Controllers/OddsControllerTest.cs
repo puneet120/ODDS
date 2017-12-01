@@ -28,9 +28,9 @@ namespace OddsBusiness.Tests.Controllers
             var mockRepo = new Mock<IOddRepository>();
             var data = mockRepo.Setup(x => x.SaveUpdateOdd(It.IsAny<Odd>())).Returns(0);
 
-            var loggermockRepo = new Mock<ILogger>();
-            var loggerdata = loggermockRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
-            OddController controller = new OddController(mockRepo.Object,loggermockRepo.Object);
+            var mockloggerRepo = new Mock<ILogger>();
+            var loggerdata = mockloggerRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
+            OddController controller = new OddController(mockRepo.Object,mockloggerRepo.Object);
 
             // Act: Save the Odd
             HttpResponseMessage result = controller.SaveUpdateOdd(null);
@@ -41,7 +41,7 @@ namespace OddsBusiness.Tests.Controllers
             Assert.IsNotNull(result);
             Assert.AreEqual(System.Net.HttpStatusCode.InternalServerError, result.StatusCode);
             
-            loggermockRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(1));
+            mockloggerRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(1));
 
 
         }
@@ -56,9 +56,9 @@ namespace OddsBusiness.Tests.Controllers
             var mockRepo = new Mock<IOddRepository>();
             var data = mockRepo.Setup(x => x.SaveUpdateOdd(It.IsAny<Odd>())).Returns(0);
 
-            var loggermockRepo = new Mock<ILogger>();
-            var loggerdata = loggermockRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
-            OddController controller = new OddController(null, loggermockRepo.Object);
+            var mockloggerRepo = new Mock<ILogger>();
+            var loggerdata = mockloggerRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
+            OddController controller = new OddController(null, mockloggerRepo.Object);
 
             // Act: Save the Odd
             OddsModel model = new OddsModel();
@@ -68,7 +68,7 @@ namespace OddsBusiness.Tests.Controllers
             Assert.IsNotNull(result);
             Assert.AreEqual(System.Net.HttpStatusCode.InternalServerError, result.StatusCode);
 
-            loggermockRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(1));
+            mockloggerRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(1));
 
         }
 
@@ -82,16 +82,16 @@ namespace OddsBusiness.Tests.Controllers
             var mockRepo = new Mock<IOddRepository>();
             var data = mockRepo.Setup(x => x.SaveUpdateOdd(It.IsAny<Odd>())).Returns(1);
 
-            var loggermockRepo = new Mock<ILogger>();
-            var loggerdata = loggermockRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
-            OddController controller = new OddController(mockRepo.Object, loggermockRepo.Object);
+            var mockloggerRepo = new Mock<ILogger>();
+            var loggerdata = mockloggerRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
+            OddController controller = new OddController(mockRepo.Object, mockloggerRepo.Object);
 
             // Act: Save the Odd
             OddsModel model = new OddsModel();
             HttpResponseMessage result = controller.SaveUpdateOdd(model);
 
             // Verify the method was called
-            loggermockRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(0));
+            mockloggerRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(0));
 
             mockRepo.Verify(x => x.SaveUpdateOdd(It.IsAny<Odd>()), Times.Exactly(1));
 
@@ -112,16 +112,16 @@ namespace OddsBusiness.Tests.Controllers
             var mockRepo = new Mock<IOddRepository>();
             var data = mockRepo.Setup(x => x.GetOdds(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(It.IsAny<IQueryable<Odd>>());
 
-            var loggermockRepo = new Mock<ILogger>();
-            var loggerdata = loggermockRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
-            OddController controller = new OddController(mockRepo.Object, loggermockRepo.Object);
+            var mockloggerRepo = new Mock<ILogger>();
+            var loggerdata = mockloggerRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
+            OddController controller = new OddController(mockRepo.Object, mockloggerRepo.Object);
 
             // Act: Save the Odd
             OddsModel model = new OddsModel();
             HttpResponseMessage result = controller.GetOdds();
 
             // Verify the method was called
-            loggermockRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(1));
+            mockloggerRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(1));
 
             mockRepo.Verify(x => x.GetOdds(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(0)); 
 
@@ -143,9 +143,9 @@ namespace OddsBusiness.Tests.Controllers
             var mockRepo = new Mock<IOddRepository>();
             var data = mockRepo.Setup(x => x.GetbyId(It.IsAny<int>())).Returns(new Odd());
 
-            var loggermockRepo = new Mock<ILogger>();
-            var loggerdata = loggermockRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
-            OddController controller = new OddController(mockRepo.Object, loggermockRepo.Object);
+            var mockloggerRepo = new Mock<ILogger>();
+            var loggerdata = mockloggerRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
+            OddController controller = new OddController(mockRepo.Object, mockloggerRepo.Object);
 
             // Act: Save the Odd
             OddsModel model = new OddsModel();
@@ -153,7 +153,7 @@ namespace OddsBusiness.Tests.Controllers
             HttpResponseMessage result = controller.GetOddById(model);
 
             // Verify the method was called
-            loggermockRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(0));
+            mockloggerRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(0));
 
             mockRepo.Verify(x => x.GetbyId(It.IsAny<int>()), Times.Exactly(1));
 
@@ -174,16 +174,16 @@ namespace OddsBusiness.Tests.Controllers
             var mockRepo = new Mock<IOddRepository>();
             var data = mockRepo.Setup(x => x.DeleteOdd(It.IsAny<int>())).Returns(1);
 
-            var loggermockRepo = new Mock<ILogger>();
-            var loggerdata = loggermockRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
-            OddController controller = new OddController(mockRepo.Object, loggermockRepo.Object);
+            var mockloggerRepo = new Mock<ILogger>();
+            var loggerdata = mockloggerRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
+            OddController controller = new OddController(mockRepo.Object, mockloggerRepo.Object);
 
             // Act: Save the Odd
             OddsModel model = new OddsModel();
             HttpResponseMessage result = controller.DeleteOdd(model);
 
             // Verify the method was called
-            loggermockRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(0));
+            mockloggerRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(0));
 
             mockRepo.Verify(x => x.DeleteOdd(It.IsAny<int>()), Times.Exactly(1));
 
