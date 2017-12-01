@@ -1,0 +1,10 @@
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.ORM\bin\Debug\OddsBusiness.ORM.dll
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.ORM\bin\Debug\OddsBusiness.ORM.pdb
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.ORM\bin\Debug\EntityFramework.dll
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.ORM\bin\Debug\EntityFramework.SqlServer.dll
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.ORM\bin\Debug\OddsBusiness.Core.dll
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.ORM\bin\Debug\OddsBusiness.Core.pdb
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.ORM\obj\Debug\OddsBusiness.ORM.csprojResolveAssemblyReference.cache
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.ORM\obj\Debug\OddsBusiness.ORM.csproj.CoreCompileInputs.cache
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.ORM\obj\Debug\OddsBusiness.ORM.dll
+D:\Assignment-Client\OddsMessaging\OddsBusiness\OddsBusiness.ORM\obj\Debug\OddsBusiness.ORM.pdb
