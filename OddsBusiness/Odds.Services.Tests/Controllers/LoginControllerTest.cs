@@ -10,6 +10,7 @@ using OddsBusiness;
 using OddsBusiness.Controllers;
 using OddsBusiness.Models;
 using System.Net.Http;
+using System.Web.Http;
 
 namespace OddsBusiness.Tests.Controllers
 {
@@ -29,18 +30,23 @@ namespace OddsBusiness.Tests.Controllers
 
             var mockloggerRepo = new Mock<ILogger>();
             var loggerdata = mockloggerRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
-            LoginController controller = new LoginController(mockRepo.Object,mockloggerRepo.Object);
+            LoginController controller = new LoginController(mockRepo.Object, mockloggerRepo.Object)
+            {
+
+                Request = new System.Net.Http.HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
+            };
 
             // Act: Login the user
-            HttpResponseMessage result = controller.CheckUserLogin(It.IsAny<LoginModel>());
+            HttpResponseMessage result = controller.CheckUserLogin(null);
 
             // Verify the method was called
             mockloggerRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(1));
 
             mockRepo.Verify(x => x.CheckLogin(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(0)); // CheckLogin will not be verified due to model null error
-           
+
             // Assert: 
-            Assert.AreEqual(expectedresult, result);
+           Assert.AreEqual(System.Net.HttpStatusCode.InternalServerError, result.StatusCode);
             Assert.IsNotNull(result);
             
            
@@ -59,7 +65,12 @@ namespace OddsBusiness.Tests.Controllers
 
             var mockloggerRepo = new Mock<ILogger>();
             var loggerdata = mockloggerRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
-            LoginController controller = new LoginController(null,mockloggerRepo.Object);
+            LoginController controller = new LoginController(null, mockloggerRepo.Object)
+            {
+
+                Request = new System.Net.Http.HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
+            };
 
             // Act: Login the user
             HttpResponseMessage result = controller.CheckUserLogin(It.IsAny<LoginModel>());
