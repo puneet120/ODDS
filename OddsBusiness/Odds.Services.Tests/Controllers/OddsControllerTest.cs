@@ -114,44 +114,7 @@ namespace OddsBusiness.Tests.Controllers
             // Assert:            
             Assert.IsNotNull(result);
             Assert.AreNotEqual(0, result);
-
-
-        }
-
-        /// <summary>
-        /// Test GetOdds method with Request.Form null
-        /// </summary>
-        [TestMethod]
-        public void GetOdds_request_form_is_null()
-        {
-            // Arrange: Setup all o\objects
-            var mockRepo = new Mock<IOddRepository>();
-            var data = mockRepo.Setup(x => x.GetOdds(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(It.IsAny<IQueryable<Odd>>());
-
-            var mockloggerRepo = new Mock<ILogger>();
-            var loggerdata = mockloggerRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
-            OddController controller = new OddController(mockRepo.Object, mockloggerRepo.Object)
-            {
-
-                Request = new System.Net.Http.HttpRequestMessage(),
-                Configuration = new HttpConfiguration()
-            };
-
-            // Act: Save the Odd
-            OddsModel model = new OddsModel();
-            HttpResponseMessage result = controller.GetOdds();
-
-            // Verify the method was called
-            mockloggerRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(1));
-
-            mockRepo.Verify(x => x.GetOdds(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(0)); 
-
-            // Assert:            
-            Assert.IsNotNull(result);
-
-            Assert.AreEqual(System.Net.HttpStatusCode.InternalServerError, result.StatusCode);
-
-        }
+        }      
 
 
         /// <summary>
@@ -186,7 +149,7 @@ namespace OddsBusiness.Tests.Controllers
             // Assert:            
             Assert.IsNotNull(result);
 
-            Assert.AreEqual(System.Net.HttpStatusCode.InternalServerError, result.StatusCode);
+            Assert.AreEqual(System.Net.HttpStatusCode.OK, result.StatusCode);
 
         }
 
