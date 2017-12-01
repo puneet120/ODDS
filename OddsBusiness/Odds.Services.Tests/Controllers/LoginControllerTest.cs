@@ -27,15 +27,15 @@ namespace OddsBusiness.Tests.Controllers
             bool expectedresult = false;
             var data = mockRepo.Setup(x => x.CheckLogin(It.IsAny<string>(), It.IsAny<string>())).Returns(expectedresult);
 
-            var loggermockRepo = new Mock<ILogger>();
-            var loggerdata = loggermockRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
-            LoginController controller = new LoginController(mockRepo.Object,loggermockRepo.Object);
+            var mockloggerRepo = new Mock<ILogger>();
+            var loggerdata = mockloggerRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
+            LoginController controller = new LoginController(mockRepo.Object,mockloggerRepo.Object);
 
             // Act: Login the user
             HttpResponseMessage result = controller.CheckUserLogin(It.IsAny<LoginModel>());
 
             // Verify the method was called
-            loggermockRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(1));
+            mockloggerRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(1));
 
             mockRepo.Verify(x => x.CheckLogin(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(0)); // CheckLogin will not be verified due to model null error
            
@@ -57,15 +57,15 @@ namespace OddsBusiness.Tests.Controllers
             bool expectedresult = false;
             var data = mockRepo.Setup(x => x.CheckLogin(It.IsAny<string>(), It.IsAny<string>())).Returns(expectedresult);
 
-            var loggermockRepo = new Mock<ILogger>();
-            var loggerdata = loggermockRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
-            LoginController controller = new LoginController(null,loggermockRepo.Object);
+            var mockloggerRepo = new Mock<ILogger>();
+            var loggerdata = mockloggerRepo.Setup(x => x.Log(It.IsAny<string>(), It.IsAny<string>()));
+            LoginController controller = new LoginController(null,mockloggerRepo.Object);
 
             // Act: Login the user
             HttpResponseMessage result = controller.CheckUserLogin(It.IsAny<LoginModel>());
 
             // Verify the method was called
-            loggermockRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(1));
+            mockloggerRepo.Verify(m => m.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(1));
 
             mockRepo.Verify(x => x.CheckLogin(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(0));
 
