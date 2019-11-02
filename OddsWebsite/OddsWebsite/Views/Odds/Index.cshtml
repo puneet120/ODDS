@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    var url = "http://localhost:50283";
+}
+
+
+<div class="clearfix">&nbsp;</div>
+<div class="clearfix">&nbsp;</div>
+<div class="container">
+    <div class="table-responsive">
+        <h3>View Odds</h3>
+        <hr />
+        <div id="dataTable">
+            <table class="table table-bordered table-striped tbl">
+                <thead>
+                    <tr>
+                        <th>Odd Description</th>
+                        <th>Odd_1</th>
+                        <th>Odd_X</th>
+                        <th>Odd_2</th>
+                        <th style="display:none;">Id</th>
+
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+
+        </div>
+    </div>
+    <div class="clearfix">&nbsp;</div>
+
+</div>
+
+<script src="@url/Scripts/jquery.signalR-2.2.2.js"></script>
+<script src="@url/signalr/hubs"></script>
+<script type="text/javascript">
+        $(function () {
+            // Reference the hub.
+
+            $.connection.hub.url = "@url/signalr";
+
+            var hubNotif = $.connection.oddsHub;
+
+            // Start the connection.
+            $.connection.hub.start().done(function () {
+
+                getAll();
+                getoddsfromdb();
+            });
+
+            // Notify while anyChanges.
+            hubNotif.client.updatedData = function (data) {
+
+                $("#tr_" + data.Id).remove();
+
+                if (data.Description != null) {
+
+                    var $newRow = $("<tr id='tr_" + data.Id + "'><td>" + data.Description + "</td>" +
+                        "<td>" + data.Odd_1 + "</td>" +
+                        "<td>" + data.Odd_X + "</td>" +
+                        "<td>" + data.Odd_2 + "</td>" +
+                        "</tr >");
+
+                    $('.tbl tbody').after($newRow);
+                    $newRow.effect("highlight", { color: '#FFCCCC' }, 3000);
+
+                    //var value = "<tr id='tr_" + data.Id + "'><td>" + data.Description + "</td>" +
+                    //    "<td>" + data.Odd_1 + "</td>" +
+                    //    "<td>" + data.Odd_X + "</td>" +
+                    //    "<td>" + data.Odd_2 + "</td>" +
+                    //    "</tr > ";
+
+
+                    //$('.tbl tbody').prepend(value).effect("highlight", { color: '#ff0000' }, 3000);
+                }
+            };
+        });
+
+        function getAll() {
+            var model = $('#dataTable');
+            $.ajax({
+                url: '@url' + '/odd/get',
+                type: 'POST'
+
+            })
+                .success(function (data) {
+
+                })
+
+    }
+        function getoddsfromdb()
+        {
+            var model = $('#dataTable');
+            $.ajax({
+                url: '@url' + '/odds/public',
+                type: 'POST'
+
+            })
+                .success(function (data) {
+                    for (var i in data)
+                    {
+                         var value = "<tr id='tr_" + data[i].Id + "'><td>" + data[i].Description + "</td>" +
+                        "<td>" + data[i].Odd_1 + "</td>" +
+                        "<td>" + data[i].Odd_X + "</td>" +
+                        "<td>" + data[i].Odd_2 + "</td>" +
+                            "</tr > ";
+                         $('.tbl tbody').append(value);
+                    }
+                })
+
+        }
+</script>
